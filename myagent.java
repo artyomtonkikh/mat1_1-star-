@@ -3,7 +3,6 @@ import jade.lang.acl.ACLMessage;
 
 public class myagent extends Agent {
     double number;
-    int amount_of_numbers=1;
     @Override
     protected void setup() {
         super.setup();
