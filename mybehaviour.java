@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 class mybehaviour extends Behaviour {
     boolean is_alive = false;
     myagent agent;
+    int amount_of_numbers=1;
     String receive_name="Agent1";
     mybehaviour(myagent agent){
         this.agent=agent;
@@ -24,6 +25,7 @@ class mybehaviour extends Behaviour {
             agent.send(msg);
             System.out.println(agent.getName()+" sent a message "+msg.getContent());
             is_alive=true;
+
             try {
                 TimeUnit.SECONDS.sleep(1);
             } catch (InterruptedException e) {
@@ -43,12 +45,12 @@ class mybehaviour extends Behaviour {
         while(msg!=null) {
             //if(msg!=null){
             agent.number = agent.number + Double.valueOf(msg.getContent());
-            agent.amount_of_numbers++;
+            amount_of_numbers++;
             System.out.println(agent.getName() + " got a message " + msg.getContent());
             msg=agent.receive();
         }
         if(msg==null){
-            System.out.println("ariphmetic mean is " + agent.number / agent.amount_of_numbers);
+            System.out.println("ariphmetic mean is " + agent.number / amount_of_numbers);
             is_alive=true;
         }
         //} else{
